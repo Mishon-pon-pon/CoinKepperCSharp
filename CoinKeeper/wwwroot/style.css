@@ -1,0 +1,132 @@
+﻿.input-group-prepend .input-group-text {
+    width: 100px;
+}
+
+.red {
+    background-color: #CD5C5C;
+    font-size: 12px;
+}
+
+.grey {
+    background-color: #C0C0C0;
+    font-size: 12px;
+}
+
+.dropdown-menu {
+    padding: 0;
+}
+
+#containers {
+    margin-top: 30px;
+}
+
+.link {
+    padding-bottom: 35px;
+}
+
+tr {
+    height: 100%;
+}
+
+td {
+    height: 50%;
+}
+
+.historySumm {
+    width: 40%;
+    float: left;
+    text-align: right;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+.historyDate {
+    width: 40%;
+    float: left;
+    text-align: left;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+.historyRowWrap:hover {
+    background: lightgrey;
+    border: none;
+}
+
+.historyRowWrap {
+    display: inline-block;
+}
+
+.buttonOper {
+    height: 15px;
+    font-size: 10px;
+    padding: 0px 2px;
+    border: none;
+    border-radius: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.historySummChange {
+    border: none;
+    width: 40%;
+    float: left;
+    text-align: right;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+.historyDateChange {
+    border: none;
+    width: 40%;
+    float: left;
+    text-align: left;
+    padding-right: 30px;
+    cursor: pointer;
+}
+
+.select {
+    background-color: lightblue;
+}
+
+    .select:hover {
+        background-color: lightblue;
+    }
+
+.change {
+    width: 45px;
+}
+
+#logout {
+    margin-top: 10px;
+}
+
+.btn_logPage {
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.historyOperationItem {
+    border-bottom: solid 1px lightgrey;
+}
+
+    .historyOperationItem > button {
+        border: none;
+        border-radius: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    /* .sum_history {
+  border-left: solid 1px lightgrey;
+  border-right: solid 1px lightgrey;
+} */
+    .historyOperationItem > input {
+        border: none;
+    }
+
+    .historyOperationItem > * {
+        height: 24px;
+    }

@@ -1,0 +1,24 @@
+﻿CREATE TABLE "Categories" (
+	"CategoryId"	INTEGER NOT NULL IDENTITY(1,1) UNIQUE,
+	"Name"	TEXT not null,
+	"AccountId"	INTEGER NOT NULL,
+	PRIMARY KEY("CategoryId")
+)
+
+CREATE TABLE Users(
+            id INTEGER NOT NULL UNIQUE, 
+            email TEXT NOT NULL, 
+            confirmemail int NOT NULL,
+            displayname TEXT,
+            dateregistration DATE NOT NULL,
+            pass TEXT NOT NULL,
+            salt TEXT NOT NULL,
+            avatarpath TEXT)
+
+CREATE TABLE "Sum" (
+	"SumId"	INTEGER NOT NULL UNIQUE,
+	"Value"	INTEGER NOT NULL,
+	"createDate"	DATE NOT NULL,
+	"CategoryId"	INTEGER NOT NULL,
+	PRIMARY KEY("SumId")
+)
