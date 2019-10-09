@@ -9,7 +9,7 @@ using System.IO;
 using System.Web;
 using System.Runtime.Serialization.Json;
 using System.Runtime.Serialization;
-using System.Text;
+using System.Text.RegularExpressions;
 
 namespace CoinKeeper.Controllers
 {
@@ -18,28 +18,23 @@ namespace CoinKeeper.Controllers
 
         public JsonResult exist()
         {
-            int countRows = DB.getRowsCount("Select count(*) as rowsCount from Categories");
             SqlCommand data = DB.Query("SELECT "
-                                           + "case "
-                                                + "when sum(s.Value) is null "
-                                                + "then 0 else sum(s.Value) "
+                                            + "case "
+                                            + "when sum(s.Value) is null "
+                                            + "then 0 else sum(s.Value) "
                                             + "end as [Value], c.CategoryId, c.AccountId, c.[Name] "
                                             + "FROM Categories c "
                                             + "left join[Sum] s on c.CategoryId = s.CategoryId "
                                             + "GROUP BY c.CategoryId, c.AccountId, c.[Name]");
+            List<Categories> rows = new List<Categories>();
 
-
-            Categories[] rows;
-            int i = 0;
             using (SqlDataReader reader = data.ExecuteReader())
             {
 
-                rows = new Categories[countRows];
+
                 while (reader.Read())
                 {
-
-                    rows[i] = new Categories((int)reader["CategoryId"], (string)reader["Name"], (int)reader["AccountId"], (int)reader["Value"]);
-                    i++;
+                    rows.Add(new Categories((int)reader["CategoryId"], (string)reader["Name"], (int)reader["AccountId"], (int)reader["Value"]));
                 }
             }
             DB.DBConnection.Close();
@@ -66,6 +61,18 @@ namespace CoinKeeper.Controllers
             }
             DB.DBConnection.Close();
             return Json(res);
+        }
+
+        [HttpDelete]
+        public String delete()
+        {
+            Regex reg = new Regex(@"\d*$");
+            MatchCollection matches = reg.Matches(HttpContext.Request.Path.Value);
+            string id = (string)matches[0].Value;
+            SqlCommand delete = DB.Query("DELETE FROM Categories WHERE CategoryId = " + id);
+            delete.ExecuteNonQuery();
+            DB.DBConnection.Close();
+            return id;
         }
     }
 
